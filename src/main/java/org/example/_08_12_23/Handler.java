@@ -237,14 +237,41 @@ public class Handler {
                 int year = books[i].getIssueYear();
                 years.append(year).append(',');
 
-      }
+            }
         }
 
-        String[] yt = years.toString().split(",");
-        Arrays.sort(yt);
-        System.out.println(Arrays.toString(yt));
+        String[] yearsArr = years.toString().split(",");
+        Arrays.sort(yearsArr);
 
+        int uniqueCount = 0;
+        for (int i = 0; i < yearsArr.length; i++) {
+            boolean isUnique = true;
+            for (int j = 0; j < i; j++) {
+                if (yearsArr[i].equals(yearsArr[j])) {
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique) {
+                uniqueCount++;
+            }
+        }
+        String[] newArray = new String[uniqueCount];
+        int newIndex = 0;
 
+        for (int i = 0; i < yearsArr.length; i++) {
+            boolean isUnique = true;
+            for (int j = 0; j < i; j++) {
+                if (yearsArr[i].equals(yearsArr[j])) {
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique) {
+                newArray[newIndex++] = yearsArr[i];
+            }
+        }
+        System.out.println(Arrays.toString(newArray));
 
     }
 
