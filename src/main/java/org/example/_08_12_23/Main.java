@@ -3,11 +3,14 @@ package org.example._08_12_23;
 import java.util.Arrays;
 
 
+
 public class Main {
 
     private static final Library[] LIBRARIES = Generator.libraryGen();
 
     public static void main(String[] args) {
+
+
 //        Handler.printAllAddresses(LIBRARIES);
 //        Handler.printTotalBookCount(LIBRARIES);
 //        Handler.printAllBookNames(LIBRARIES[0]);
