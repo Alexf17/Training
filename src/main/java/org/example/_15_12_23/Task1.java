@@ -1,17 +1,10 @@
 package org.example._15_12_23;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 public class Task1 {
     public static void main(String[] args) {
-
-
-
-
 
 
         int capacity = 10;
@@ -27,6 +20,7 @@ public class Task1 {
         Random random = new Random();
 
         for (int i = 0; i < capacity; i++) {
+
             String[] array = new String[random.nextInt(1, 7)];
             Integer[] intArr = new Integer[array.length];
             List<String> innerList = new ArrayList<>();
@@ -35,6 +29,7 @@ public class Task1 {
             numbers.add(random.nextInt(1, 11));
             char index = (char) (i + 65);
             charList.add(index);
+
             for (int j = 0; j < array.length; j++) {
                 array[j] = "Element " + i + "-" + j;
                 intArr[j] = i * 5 + j;
@@ -65,12 +60,14 @@ public class Task1 {
 //        getNewListWthUniqueElements(list);
 //        getReverseList(charList);
 //        getRepetitiveList(intList);
-//        getAllSubsets(numbers);
-        getAllIntComb(list);
+//        ----------------------------------------------------------------
+//        System.out.println(getAllSubsets(numbers));
+        getAllSubsets(numbers);
+//        ----------------------------------------------------------------
+//        getAllIntComb(list);
 //        getMaxSumList(intList);
 //        getAllStrings(charList);
     }
-
 
 
     //        Перебор List<String> и вывод каждого элемента.
@@ -136,10 +133,11 @@ public class Task1 {
         int count = 0;
         for (Character s : list) {
             String letter = s.toString().toLowerCase();
-            if (letter.equals("a") || letter.equals("o") || letter.equals("e") || letter.equals("u") || letter.equals("y") || letter.equals("i"))
+            if (letter.equals("a") || letter.equals("o") || letter.equals("e") || letter.equals("u") || letter.equals("y") || letter.equals("i")) {
                 ++count;
+            }
         }
-        System.out.println("CountOfVowel: "+count);
+        System.out.println("CountOfVowel: " + count);
     }
 
     //    Перебор List<String[]>, вывод длины каждого подмассива.
@@ -210,8 +208,9 @@ public class Task1 {
     public static void getNumberWithSum(List<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i; j < list.size(); j++) {
-                if (list.get(j) + list.get(i) == 10)
+                if (list.get(j) + list.get(i) == 10) {
                     System.out.println("Sum of " + list.get(j) + " + " + list.get(i) + " equals 10");
+                }
             }
         }
         System.out.println(list);
@@ -257,15 +256,43 @@ public class Task1 {
     }
 
     //    Перебор List<Integer> и нахождение всех подмножеств этого списка.
-    public static void getAllSubsets(List<Integer> list) {
+
+//    public static List<List<Integer>> getAllSubsets(List<Integer> list) {
+//        List<List<Integer>> result = new ArrayList<>();
+//        generateSubsets(list, 0, new ArrayList<>(), result);
+//        return result;
+//    }
+//
+//    public static void generateSubsets(List<Integer> list, int index, List<Integer> current, List<List<Integer>> result) {
+//        result.add(new ArrayList<>(current));
+//        for (int i = index; i < list.size(); i++) {
+//            current.add(list.get(i));
+//            generateSubsets(list, i + 1, current, result);
+//            current.remove(current.size() - 1);
+//        }
+//    }
+//    public static List<List<Integer>> getAllSubsets(List<Integer> list) {
+//        List<List<Integer>> sets = new LinkedList<>();
+//        doGenerate(0, list, new LinkedList<>(), sets);
+//        return sets;
+//    }
+//
+//    public static void doGenerate(int index, List<Integer> soursList, LinkedList<Object> newSetList,
+//                                  List<List<Integer>> sets) {
+//
+//    }
+
+        public static void getAllSubsets(List<Integer> list) {
+        System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
             for (int j = i + 1; j < list.size(); j++) {
-                System.out.println(list.get(i) + " + " + list.get(j));
+                System.out.println(list.get(i) + "," + list.get(j));
             }
         }
     }
 //    Перебор List<String> и создание всех возможных комбинаций строк без повторений.
-    public static void getAllIntComb(List<String> list){
+    public static void getAllIntComb(List<String> list) {
 
     }
 
@@ -288,7 +315,7 @@ public class Task1 {
 
     //    Перебор List<Character> и построение всех возможных строк из данных символов.
     public static void getAllStrings(List<Character> list) {
-        for (int i = 0; i < list.size()-1; i++) {
+        for (int i = 0; i < list.size() - 1; i++) {
             StringBuilder str = new StringBuilder();
             for (int j = i + 1; j < list.size(); j++) {
                 str.append(list.get(i)).append(list.get(j));

@@ -3,7 +3,6 @@ package org.example._14_12_23;
 public enum DayOfWeek {
     MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
 
-
     public DayOfWeek getNextDayOfWeek() {
 
 //        int result = this.ordinal();
