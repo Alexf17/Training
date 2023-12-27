@@ -1,6 +1,6 @@
 package org.example._25_12_23;
 
-public class Main {
+public class T1 {
     public static void main(String[] args) {
 met ((s)->s.length(),"awddawdw");
     }
