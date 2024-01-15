@@ -9,12 +9,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Handler {
-    static Set<Team<Adult>> adultTeams = new HashSet<>();
-    static Set<Team<TeenAger>> teenAgerTeams = new HashSet<>();
-    static Set<Team<Pupil>> pupilTeams = new HashSet<>();
-    static Map<String, Double> adultTeamResults = new HashMap<>();
-    static Map<String, Double> teenAgerTeamResults = new HashMap<>();
-    static Map<String, Double> pupilTeamResults = new HashMap<>();
+    public static Set<Team<Adult>> adultTeams = new HashSet<>();
+    public static Set<Team<TeenAger>> teenAgerTeams = new HashSet<>();
+    public static Set<Team<Pupil>> pupilTeams = new HashSet<>();
+    public static Map<String, Double> adultTeamResults = new HashMap<>();
+    public static Map<String, Double> teenAgerTeamResults = new HashMap<>();
+    public static Map<String, Double> pupilTeamResults = new HashMap<>();
 
 
     public static void start() {
