@@ -15,6 +15,9 @@ public class Handler {
     public static Map<String, Double> adultTeamResults = new HashMap<>();
     public static Map<String, Double> teenAgerTeamResults = new HashMap<>();
     public static Map<String, Double> pupilTeamResults = new HashMap<>();
+    public static Map<Team<Adult>, Double> fullAdultTeamResults = new HashMap<>();
+    public static Map<Team<TeenAger>, Double> fullTeenAgerTeamResults = new HashMap<>();
+    public static Map<Team<Pupil>, Double> fullPupilTeams = new HashMap<>();
 
 
     public static void start() {
@@ -22,12 +25,21 @@ public class Handler {
         playGames(adultTeams);
         playGames(teenAgerTeams);
         playGames(pupilTeams);
-        System.out.println("-----Adult team results--------------");
-        System.out.println(adultTeamResults);
-        System.out.println("-----TeenAger team results--------------");
-        System.out.println(teenAgerTeamResults);
-        System.out.println("-----Pupil team results--------------");
-        System.out.println(pupilTeamResults);
+//        System.out.println("-----Adult team results--------------");
+//        System.out.println(adultTeamResults);
+//        System.out.println("-----TeenAger team results--------------");
+//        System.out.println(teenAgerTeamResults);
+//        System.out.println("-----Pupil team results--------------");
+//        System.out.println(pupilTeamResults);
+//        System.out.println("-------------------");
+
+//        for(Team<Adult>t: adultTeams){
+//            System.out.println(t.getTeamName()+" : "+t.getWins().size()+" : "+t.getGameСounter());
+//        }
+//        System.out.println(adultTeams.stream().map(e->e.getLosses()).toList());
+//        System.out.println(pupilTeams.stream().map(e->e.getLosses()).toList());
+//        System.out.println(teenAgerTeams.stream().map(e->e.getLosses()).toList());
+
 
     }
 
@@ -39,7 +51,6 @@ public class Handler {
     }
 
     public static <T extends Members> void playGames(Set<Team<T>> teams) {
-
         StringBuilder sb = new StringBuilder();
         for (Team<T> team_1 : teams) {
             sb.append(team_1.getTeamName());
@@ -56,12 +67,15 @@ public class Handler {
         for (Team<T> team : teams) {
             if (team.getMemberList().toArray()[0] instanceof Adult) {
                 adultTeamResults.put(team.getTeamName(), team.getTeamScore());
+                fullAdultTeamResults.put((Team<Adult>) team, team.getTeamScore());
                 adultTeamResults = createSortedList(adultTeamResults);
             } else if (team.getMemberList().toArray()[0] instanceof Pupil) {
                 pupilTeamResults.put(team.getTeamName(), team.getTeamScore());
+                fullPupilTeams.put((Team<Pupil>) team, team.getTeamScore());
                 pupilTeamResults = createSortedList(pupilTeamResults);
             } else if (team.getMemberList().toArray()[0] instanceof TeenAger) {
                 teenAgerTeamResults.put(team.getTeamName(), team.getTeamScore());
+                fullTeenAgerTeamResults.put((Team<TeenAger>) team, team.getTeamScore());
                 teenAgerTeamResults = createSortedList(teenAgerTeamResults);
             }
         }
@@ -129,11 +143,10 @@ public class Handler {
     }
 
     public static Map<String, Double> createSortedList(Map<String, Double> results) {
-        Map<String, Double> sortedValues = results.entrySet()
+        return results.entrySet()
                 .stream()
                 .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        return sortedValues;
     }
 
 }

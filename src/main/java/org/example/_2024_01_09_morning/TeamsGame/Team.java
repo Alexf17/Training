@@ -8,20 +8,29 @@ import java.util.*;
 public class Team<T extends Members> {
     private String teamName;
     private double teamScore;
-    private final Set<T> memberList = new HashSet<T>();
+    private Set<T> memberList = new HashSet<T>();
+    private final List<String> wins = new ArrayList<String>();
+    private final List<String> losses= new ArrayList<String>();
+    private final List<String> draws=new ArrayList<String>();
+    private int gameСounter;
+
     @Override
-    public  String toString() {
+    public String toString() {
         return "Team{" +
                 "teamName='" + teamName + '\'' +
                 ", teamScore=" + teamScore +
-                ", membersList=" + memberList +
+                ", memberList=" + memberList +
+                ", wins=" + wins +
+                ", losses=" + losses +
+                ", draws=" + draws +
+                ", gameСounter=" + gameСounter +
                 '}';
     }
 
-
-
-    public Team(String teamName) {
+    public Team(String teamName,Set<T> memberList) {
         this.teamName = teamName;
+        this.memberList = memberList;
+
     }
 
     public void setTeamName(String teamName) {
@@ -34,19 +43,23 @@ public class Team<T extends Members> {
     }
 
     public void play(Team<T> secondTeam) {
-        String winner;
+        this.gameСounter+=1;
+        secondTeam.gameСounter+=1;
         int randomDigit = new Random().nextInt(3);
         if (randomDigit == 0) {
-            winner = this.teamName;
+            secondTeam.losses.add(this.getTeamName());
             this.teamScore += 1;
+            this.wins.add(secondTeam.getTeamName());
         } else if (randomDigit == 1) {
-            winner = secondTeam.teamName;
+            this.losses.add(secondTeam.getTeamName());
             secondTeam.teamScore += 1;
+            secondTeam.wins.add(this.getTeamName());
         } else {
-            winner = "both teams";
+            this.draws.add(secondTeam.getTeamName());
+            secondTeam.draws.add(this.getTeamName());
             this.teamScore += 0.5;
             secondTeam.teamScore += 0.5;
         }
-//        System.out.println("Winner: " + "'"+winner+ "'" + " congratulation!");
+
     }
 }
