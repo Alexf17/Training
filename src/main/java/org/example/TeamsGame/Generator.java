@@ -1,11 +1,11 @@
-package org.example._2024_01_09_morning.TeamsGame;
+package org.example.TeamsGame;
 
 import com.github.javafaker.Faker;
-import org.example._2024_01_09_morning.TeamsGame.Exceptions.ErrorMessages;
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.Adult;
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.Pupil;
-import org.example._2024_01_09_morning.TeamsGame.Exceptions.TeamCantBeEmptyException;
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.TeenAger;
+import org.example.TeamsGame.Exceptions.TeamCantBeEmptyException;
+import org.example.TeamsGame.TypesOfPlayers.Adult;
+import org.example.TeamsGame.TypesOfPlayers.Pupil;
+import org.example.TeamsGame.TypesOfPlayers.TeenAger;
+import org.example.TeamsGame.Exceptions.ErrorMessages;
 
 import java.util.*;
 

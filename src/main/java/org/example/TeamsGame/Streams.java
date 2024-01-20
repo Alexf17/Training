@@ -1,13 +1,8 @@
-package org.example._2024_01_09_morning.TeamsGame;
-
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.Adult;
+package org.example.TeamsGame;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
-
-import static org.example._2024_01_09_morning.TeamsGame.Handler.adultTeamResults;
-import static org.example._2024_01_09_morning.TeamsGame.Handler.adultTeams;
 
 
 public class Streams {
@@ -29,7 +24,7 @@ public class Streams {
 
     //        Средний возраст участников в каждой команде:
     public static <T extends Members> void getAverageAge(Set<Team<T>> teams) {
-        System.out.println(teams.stream().flatMap(team -> team.getMemberList().stream()).mapToInt(Members::getAge).average());
+        System.out.println(teams.stream().flatMap(team -> team.getMemberList().stream()).mapToInt(Members::getAge).average().orElse(0.0));
     }
 
     //    Команды с баллами выше среднего:
@@ -50,7 +45,7 @@ public class Streams {
 
     //        Самая опытная команда: Определить команду с наибольшим суммарным возрастом участников.
     public static <T extends Members> void getExperiencedTeam(Set<Team<T>> teams) {
-        System.out.println(teams.stream().max(Comparator.comparingInt(t -> t.getMemberList().stream().mapToInt(e -> e.getAge()).sum())).map(e -> e.getTeamName()));
+        System.out.println(teams.stream().max(Comparator.comparingInt(t -> t.getMemberList().stream().mapToInt(e -> e.getAge()).sum())).map(e -> e.getTeamName()).orElse(""));
     }
 
     //        Команды с участниками в определенном возрастном диапазоне:
@@ -115,14 +110,15 @@ public class Streams {
 
     //        Вывести результаты всех игр между двумя конкретными командами.
     public static <T extends Members> void getResultsBetweenSpecificTeams(Set<Team<T>> teams) {
-Team<T> team1 = Generator.getRandomTeam(teams);
-Team<T> team2 = Generator.getRandomTeam(teams);
-long wins = team1.getWins().stream().filter(r->r.contains(team2.getTeamName())).count();
-long losses = team1.getLosses().stream().filter(r->r.contains(team2.getTeamName())).count();
-long draws = team1.getDraws().stream().filter(r->r.contains(team2.getTeamName())).count();
+        Team<T> team1 = Generator.getRandomTeam(teams);
+        Team<T> team2 = Generator.getRandomTeam(teams);
+        long wins = team1.getWins().stream().filter(r -> r.contains(team2.getTeamName())).count();
+        long losses = team1.getLosses().stream().filter(r -> r.contains(team2.getTeamName())).count();
+        long draws = team1.getDraws().stream().filter(r -> r.contains(team2.getTeamName())).count();
         System.out.println("Team '" + team1.getTeamName() + "' play with '" + team2.getTeamName() + "'");
-        System.out.println("'"+team1.getTeamName() + "' win " + wins + ", lose "
+        System.out.println("'" + team1.getTeamName() + "' win " + wins + ", lose "
                 + losses + " and draw " + draws + " times");
+        System.out.println("---");
     }
 
 
@@ -133,10 +129,11 @@ long draws = team1.getDraws().stream().filter(r->r.contains(team2.getTeamName())
         double age1 = team1.getMemberList().stream().mapToInt(Members::getAge).average().orElse(0);
         double age2 = team1.getMemberList().stream().mapToInt(Members::getAge).average().orElse(0);
         System.out.println("Team '" + team1.getTeamName() + "'  with '" + team2.getTeamName() + "'");
-        System.out.println("Average score of: '" +team1.getTeamName() + "' is " + team1.getTeamScore());
-        System.out.println("Average score of: '" +team2.getTeamName() + "' is " + team2.getTeamScore());
-        System.out.println("Average age in: '" +team1.getTeamName() + "' is " + age1);
-        System.out.println("Average age in: '" +team2.getTeamName() + "' is " + age2);
+        System.out.println("Average score of: '" + team1.getTeamName() + "' is " + team1.getTeamScore());
+        System.out.println("Average score of: '" + team2.getTeamName() + "' is " + team2.getTeamScore());
+        System.out.println("Average age in: '" + team1.getTeamName() + "' is " + age1);
+        System.out.println("Average age in: '" + team2.getTeamName() + "' is " + age2);
+        System.out.println("---");
 
     }
 
@@ -153,12 +150,14 @@ long draws = team1.getDraws().stream().filter(r->r.contains(team2.getTeamName())
 
     //        Определить команды с самой длинной последовательностью побед.
     public static <T extends Members> void getMaxWinsTeam(Set<Team<T>> teams) {
-        System.out.println(teams.stream().max(Comparator.comparingInt(t -> t.getWins().size())).map(t -> t.getTeamName()));
+        System.out.println(teams.stream().max(Comparator.comparingInt(t -> t.getWins().size())).map(t -> t.getTeamName()).orElse(""));
     }
 
     //        Найти команды с наибольшим количеством ничьих результатов.
     public static <T extends Members> void getMostDrawsTeam(Set<Team<T>> teams) {
-        System.out.println(teams.stream().mapToInt(t -> t.getDraws().size()).max().orElse(0));
+//        System.out.println(teams.stream().mapToInt(t -> t.getDraws().size()).max());
+        System.out.println(teams.stream().max(Comparator.comparingInt(t->t.getDraws().size())).map(e->e.getTeamName() +" : "+ e.getDraws().size() + " draws").orElse(""));
+
     }
 //        Выявить команды, которые показали наибольшее улучшение баллов к концу сезона.
 

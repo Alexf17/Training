@@ -1,4 +1,4 @@
-package org.example._2024_01_09_morning.TeamsGame;
+package org.example.TeamsGame;
 
 import lombok.Getter;
 

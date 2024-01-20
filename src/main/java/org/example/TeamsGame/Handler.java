@@ -1,8 +1,8 @@
-package org.example._2024_01_09_morning.TeamsGame;
+package org.example.TeamsGame;
 
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.Adult;
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.Pupil;
-import org.example._2024_01_09_morning.TeamsGame.TypesOfPlayers.TeenAger;
+import org.example.TeamsGame.TypesOfPlayers.Adult;
+import org.example.TeamsGame.TypesOfPlayers.Pupil;
+import org.example.TeamsGame.TypesOfPlayers.TeenAger;
 
 
 import java.util.*;
