@@ -142,7 +142,7 @@ public class Main {
         Streams.getTeamWithUniqueParticipantsName(Handler.pupilTeams);
 
         System.out.println();
-        System.out.println("-----------------Teams with max wins-------------------------------------");
+        System.out.println("-----------------Teams with the longest winning streak-------------------------------------");
 //        Определить команды с самой длинной последовательностью побед.
         Streams.getMaxWinsTeam(Handler.adultTeams);
         Streams.getMaxWinsTeam(Handler.teenAgerTeams);
@@ -155,8 +155,13 @@ public class Main {
         Streams.getMostDrawsTeam(Handler.teenAgerTeams);
         Streams.getMostDrawsTeam(Handler.pupilTeams);
 
-
+        System.out.println();
+        System.out.println("-----------------Teams with greatest improvement by the end of the season-");
 // !!!       Выявить команды, которые показали наибольшее улучшение баллов к концу сезона.
+//        Тоже самое что и с самой длинной последовательностью побед.
+        Streams.getMaxWinsTeam(Handler.adultTeams);
+        Streams.getMaxWinsTeam(Handler.teenAgerTeams);
+        Streams.getMaxWinsTeam(Handler.pupilTeams);
 
         System.out.println();
         System.out.println("-----------------Total report--------------------------------------------");
