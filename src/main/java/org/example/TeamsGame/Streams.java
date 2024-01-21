@@ -116,9 +116,13 @@ public class Streams {
     public static <T extends Members> void getResultsBetweenSpecificTeams(Set<Team<T>> teams) {
         Team<T> team1 = Generator.getRandomTeam(teams);
         Team<T> team2 = Generator.getRandomTeam(teams);
-        long wins = team1.getWins().stream().filter(r -> r.contains(team2.getTeamName())).count();
-        long losses = team1.getLosses().stream().filter(r -> r.contains(team2.getTeamName())).count();
-        long draws = team1.getDraws().stream().filter(r -> r.contains(team2.getTeamName())).count();
+        if (Objects.equals(team1.getTeamName(), team2.getTeamName())){
+            team2 = Generator.getRandomTeam(teams);
+        }
+        Team<T> finalTeam = team2;
+        long wins = team1.getWins().stream().filter(r -> r.contains(finalTeam.getTeamName())).count();
+        long losses = team1.getLosses().stream().filter(r -> r.contains(finalTeam.getTeamName())).count();
+        long draws = team1.getDraws().stream().filter(r -> r.contains(finalTeam.getTeamName())).count();
         System.out.println("Team '" + team1.getTeamName() + "' play with '" + team2.getTeamName() + "'");
         System.out.println("'" + team1.getTeamName() + "' win " + wins + ", lose "
                 + losses + " and draw " + draws + " times");
