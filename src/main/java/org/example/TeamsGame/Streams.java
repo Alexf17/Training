@@ -1,5 +1,9 @@
 package org.example.TeamsGame;
 
+import org.example.TeamsGame.TypesOfPlayers.Adult;
+import org.example.TeamsGame.TypesOfPlayers.Pupil;
+import org.example.TeamsGame.TypesOfPlayers.TeenAger;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
@@ -156,10 +160,25 @@ public class Streams {
     //        Найти команды с наибольшим количеством ничьих результатов.
     public static <T extends Members> void getMostDrawsTeam(Set<Team<T>> teams) {
 //        System.out.println(teams.stream().mapToInt(t -> t.getDraws().size()).max());
-        System.out.println(teams.stream().max(Comparator.comparingInt(t->t.getDraws().size())).map(e->e.getTeamName() +" : "+ e.getDraws().size() + " draws").orElse(""));
+        System.out.println(teams.stream().max(Comparator.comparingInt(t -> t.getDraws().size())).map(e -> e.getTeamName() + " : " + e.getDraws().size() + " draws").orElse(""));
 
     }
 //        Выявить команды, которые показали наибольшее улучшение баллов к концу сезона.
 
-//        Создать комплексный отчет, включающий средний возраст команды, общее количество баллов, наибольшую победную серию, и сравнение с другими командами.
+    //        Создать комплексный отчет, включающий средний возраст команды, общее количество баллов, наибольшую победную серию, и сравнение с другими командами.
+    public static <T extends Members> void getReport(Set<Team<T>> teams) {
+
+        String teamType = null;
+        if(teams.iterator().next().getMemberList().toArray()[0] instanceof Adult){
+            teamType = "Adult";
+        } else if(teams.iterator().next().getMemberList().toArray()[0] instanceof TeenAger){
+            teamType = "TeenAger";
+        }else if(teams.iterator().next().getMemberList().toArray()[0] instanceof Pupil){
+            teamType = "Pupil";
+        }
+        double totalScore = teams.stream().mapToDouble(Team::getTeamScore).sum();
+        double averageAge = teams.stream().flatMap(e -> e.getMemberList().stream()).mapToDouble(t -> t.getAge()).average().orElse(0.0);
+        int maxWins = teams.stream().max(Comparator.comparingInt(t->t.getWins().size())).map(e->e.getWins().size()).orElse(0);
+        System.out.println("Teams of "+teamType +" have average age: "+averageAge+" ,total score: "+totalScore + ",longest winning streaks: "+maxWins);
+    }
 }

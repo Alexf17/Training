@@ -155,9 +155,15 @@ public class Main {
         Streams.getMostDrawsTeam(Handler.teenAgerTeams);
         Streams.getMostDrawsTeam(Handler.pupilTeams);
 
+
 // !!!       Выявить команды, которые показали наибольшее улучшение баллов к концу сезона.
 
-// !!!       Создать комплексный отчет, включающий средний возраст команды, общее количество баллов, наибольшую победную серию, и сравнение с другими командами.
+        System.out.println();
+        System.out.println("-----------------Total report--------------------------------------------");
+//        Создать комплексный отчет, включающий средний возраст команды, общее количество баллов, наибольшую победную серию, и сравнение с другими командами.
+        Streams.getReport(Handler.adultTeams);
+        Streams.getReport(Handler.teenAgerTeams);
+        Streams.getReport(Handler.pupilTeams);
     }
 
 }
