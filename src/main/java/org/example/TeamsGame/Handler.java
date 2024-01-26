@@ -1,5 +1,7 @@
 package org.example.TeamsGame;
 
+import org.example.TeamsGame.Exceptions.ErrorMessages;
+import org.example.TeamsGame.Exceptions.TeamCantBeEmptyException;
 import org.example.TeamsGame.TypesOfPlayers.Adult;
 import org.example.TeamsGame.TypesOfPlayers.Pupil;
 import org.example.TeamsGame.TypesOfPlayers.TeenAger;
@@ -51,6 +53,9 @@ public class Handler {
     }
 
     public static <T extends Members> void playGames(Set<Team<T>> teams) {
+        if(teams.isEmpty()){
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
+        }
         StringBuilder sb = new StringBuilder();
         for (Team<T> team_1 : teams) {
             sb.append(team_1.getTeamName());
@@ -64,6 +69,9 @@ public class Handler {
     }
 
     public static <T extends Members> void createRating(Set<Team<T>> teams) {
+        if(teams.isEmpty()){
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
+        }
         for (Team<T> team : teams) {
             if (team.getMemberList().toArray()[0] instanceof Adult) {
                 adultTeamResults.put(team.getTeamName(), team.getTeamScore());
@@ -83,6 +91,9 @@ public class Handler {
     }
 
     public static <T extends Members> void check(Set<Team<T>> teams) {
+        if(teams.isEmpty()){
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
+        }
         Map<String, Double> results = new HashMap<>();
         for (Team<T> team : teams) {
             if (team.getMemberList().toArray()[0] instanceof Adult) {

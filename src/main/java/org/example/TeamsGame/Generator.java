@@ -38,7 +38,7 @@ public class Generator {
             team.add(teamMembers);
         }
         if (team.isEmpty()) {
-            throw new TeamCantBeEmptyException("Team must be not empty");
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
         }
         return team;
     }
@@ -53,12 +53,15 @@ public class Generator {
             team.add(teamMembers);
         }
         if (team.isEmpty()) {
-            throw new TeamCantBeEmptyException("Team must be not empty");
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
         }
         return team;
     }
 
     public static <T extends Members> String getRandomTeamName(Set<Team<T>> teams) {
+        if(teams.isEmpty()){
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
+        }
         int random = new Random().nextInt(1, teams.size());
         List<String> list = new ArrayList<>();
         for (Team<T> team : teams) {
@@ -67,6 +70,9 @@ public class Generator {
         return list.get(random);
     }
     public static <T extends Members> Team<T> getRandomTeam(Set<Team<T>> teams) {
+        if(teams.isEmpty()){
+            throw new TeamCantBeEmptyException(ErrorMessages.TEAM_MUST_BE_NOT_EMPTY);
+        }
         int random = new Random().nextInt(1, teams.size());
         List<Team<T>> list = new ArrayList<>(teams);
         return list.get(random);
