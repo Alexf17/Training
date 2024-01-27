@@ -12,16 +12,16 @@ public class Taski {
 
 //        Прочитайте файл и посчитайте средний рейтинг всех стримов.
 //        Запишите результат в новый файл.
-//        getAverageRating(fromFile, toFile);
+        getAverageRating(fromFile, toFile);
 
 //        Отфильтруйте стримы, имеющие рейтинг выше 4.5, и запишите их в новый файл.
-//        getRatingMoreThan(fromFile, toFile);
+        getRatingMoreThan(fromFile, toFile);
 
 //        Сгруппируйте стримы по названию и запишите количество стримов в каждой группе в новый файл.
-//        getGroupingStream(fromFile, toFile);
+        getGroupingStream(fromFile, toFile);
 
 //        Отсортируйте стримы по рейтингу от наибольшего к наименьшему и запишите результаты в новый файл.
-//        getSortedStream(fromFile, toFile);
+        getSortedStream(fromFile, toFile);
 
 //        Найдите стримы с минимальным рейтингом и выведите их в новый файл.
         getMinStream(fromFile, toFile);
@@ -31,16 +31,16 @@ public class Taski {
         getStatistics(fromFile, toFile);
 
 //        Измените названия всех стримов, добавив к ним префикс "Stream-" и запишите обновленные названия в новый файл.
-//        changeName(fromFile, toFile);
+        changeName(fromFile, toFile);
 
 //        Отфильтруйте стримы с рейтингом ниже 4.7 и преобразуйте их названия, добавив в конец "- Low Rated". Запишите результаты в новый файл.
-//        sortAndChangeName(fromFile, toFile);
+        sortAndChangeName(fromFile, toFile);
 
 //        Создайте сводку, включающую идентификатор стрима, название и рейтинг, и запишите ее в новый файл в формате "ID: Название - Рейтинг".
 //        getNewTab(fromFile, toFile);
 
 //        Соберите все названия стримов в одну длинную строку, разделяя их запятыми, и запишите эту строку в новый файл.
-//        getAllNames(fromFile, toFile);
+        getAllNames(fromFile, toFile);
 
     }
 
