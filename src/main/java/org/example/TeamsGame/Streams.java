@@ -59,7 +59,7 @@ public class Streams {
 
     //        Имена участников по убыванию возраста:
     public static <T extends Members> void getParticipantsDescendingByAge(Set<Team<T>> teams) {
-        System.out.println(teams.stream().flatMap(e -> e.getMemberList().stream()).sorted(Comparator.comparingInt(Members::getAge).reversed()).toList());
+        System.out.println(teams.stream().flatMap(e -> e.getMemberList().stream()).sorted(Comparator.comparingInt(Members::getAge).reversed()).collect(Collectors.toMap(e->e.getName(),e->e.getAge())));
     }
 
     //        Найти команду с наибольшим разбросом возрастов участников.

@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         Handler.start();
+        System.out.println(Handler.adultTeams);
 
         System.out.println("-----------------Teams with max score------------------------------------");
 //          Найти команду с максимальными баллами:

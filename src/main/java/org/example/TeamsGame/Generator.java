@@ -9,6 +9,8 @@ import org.example.TeamsGame.Exceptions.ErrorMessages;
 
 import java.util.*;
 
+import static org.example.TeamsGame.GenCard.getAllCardInfo;
+
 public class Generator {
     private static final Faker FAKER = new Faker();
     private static final Random RANDOM = new Random();
@@ -18,7 +20,7 @@ public class Generator {
         for (int i = 0; i < 25; i++) {
             Team<Adult> teamMembers = new Team<>(FAKER.team().name(),new HashSet<>());
             for (int j = 1; j < 5; j++) {
-                teamMembers.addNewMembers(new Adult(FAKER.name().name(), RANDOM.nextInt(30, 45)));
+                teamMembers.addNewMembers(new Adult(FAKER.name().name(), RANDOM.nextInt(30, 45),getAllCardInfo()));
             }
             team.add(teamMembers);
         }
@@ -33,7 +35,7 @@ public class Generator {
         for (int i = 0; i < 25; i++) {
             Team<Pupil> teamMembers = new Team<>(FAKER.team().name(),new HashSet<>());
             for (int j = 1; j < 5; j++) {
-                teamMembers.addNewMembers(new Pupil(FAKER.name().name(), RANDOM.nextInt(9, 18)));
+                teamMembers.addNewMembers(new Pupil(FAKER.name().name(), RANDOM.nextInt(9, 18),getAllCardInfo()));
             }
             team.add(teamMembers);
         }
@@ -48,7 +50,7 @@ public class Generator {
         for (int i = 0; i < 25; i++) {
             Team<TeenAger> teamMembers = new Team<>(FAKER.team().name(),new HashSet<>());
             for (int j = 1; j < 5; j++) {
-                teamMembers.addNewMembers(new TeenAger(FAKER.name().name(), RANDOM.nextInt(18, 31)));
+                teamMembers.addNewMembers(new TeenAger(FAKER.name().name(), RANDOM.nextInt(18, 31),getAllCardInfo()));
             }
             team.add(teamMembers);
         }
