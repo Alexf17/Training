@@ -9,7 +9,7 @@ import org.example.TeamsGame.Exceptions.ErrorMessages;
 
 import java.util.*;
 
-import static org.example.TeamsGame.GenCard.getAllCardInfo;
+import static org.example.TeamsGame.GenerateCard.getAllCardInfo;
 
 public class Generator {
     private static final Faker FAKER = new Faker();

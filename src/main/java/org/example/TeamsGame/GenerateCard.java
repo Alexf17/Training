@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-public class GenCard {
+public class GenerateCard {
     private static int resSum = 0;
     static Random random = new Random();
 
